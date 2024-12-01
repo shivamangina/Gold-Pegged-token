@@ -5,7 +5,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-gold_pegged_token = "FXVzuu34eP69d2DyKcVDwUstqxU2cf5YAGdbMCxWvXE7"
+gold_pegged_token = "BddZyxYaMEnRSBMjqjYMLbGzwfnZwXggB8FFoLYC5hED"
 
 [registry]
 url = "https://api.apr.dev"
@@ -15,4 +15,4 @@ cluster = "Localnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
-test = "cargo test"
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

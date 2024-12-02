@@ -2,10 +2,10 @@ use anchor_lang::prelude::*;
 use anchor_lang::solana_program::entrypoint::ProgramResult;
 use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};
 
-declare_id!("BddZyxYaMEnRSBMjqjYMLbGzwfnZwXggB8FFoLYC5hED");
+declare_id!("GLMZuTEAWQSdkiQWTvfvKM1Mv1WKnqphqvTWQWKJm8NB");
 
 #[program]
-pub mod gold_token_contract {
+pub mod gold_pegged_token {
     use super::*;
 
     pub fn mint_gold(ctx: Context<MintGold>, amount: u64) -> ProgramResult {
@@ -20,21 +20,6 @@ pub mod gold_token_contract {
 
         // Mint the tokens
         token::mint_to(cpi_ctx, amount)?;
-
-        // Transfer SOL from user to the contract
-        let ix = anchor_lang::solana_program::system_instruction::transfer(
-            &ctx.accounts.user.key(),
-            &ctx.accounts.contract.key(),
-            amount,
-        );
-        anchor_lang::solana_program::program::invoke(
-            &ix,
-            &[
-                ctx.accounts.user.to_account_info(),
-                ctx.accounts.contract.to_account_info(),
-            ],
-        )?;
-
         Ok(())
     }
 
@@ -50,18 +35,6 @@ pub mod gold_token_contract {
 
         // Transfer the tokens back to the contract
         token::transfer(cpi_ctx, amount)?;
-
-        // Transfer SOL from the contract to the user
-        **ctx
-            .accounts
-            .contract
-            .to_account_info()
-            .try_borrow_mut_lamports()? -= amount;
-        **ctx
-            .accounts
-            .user
-            .to_account_info()
-            .try_borrow_mut_lamports()? += amount;
 
         Ok(())
     }

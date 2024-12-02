@@ -5,7 +5,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-gold_pegged_token = "BddZyxYaMEnRSBMjqjYMLbGzwfnZwXggB8FFoLYC5hED"
+gold_pegged_token = "GLMZuTEAWQSdkiQWTvfvKM1Mv1WKnqphqvTWQWKJm8NB"
 
 [registry]
 url = "https://api.apr.dev"

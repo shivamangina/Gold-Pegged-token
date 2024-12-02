@@ -1,0 +1,100 @@
+{
+  "address": "GLMZuTEAWQSdkiQWTvfvKM1Mv1WKnqphqvTWQWKJm8NB",
+  "metadata": {
+    "name": "gold_pegged_token",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "mint_gold",
+      "discriminator": [
+        57,
+        182,
+        89,
+        242,
+        108,
+        198,
+        112,
+        210
+      ],
+      "accounts": [
+        {
+          "name": "mint",
+          "writable": true
+        },
+        {
+          "name": "token_account",
+          "writable": true
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "contract",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "sell_gold",
+      "discriminator": [
+        210,
+        44,
+        254,
+        227,
+        159,
+        29,
+        16,
+        178
+      ],
+      "accounts": [
+        {
+          "name": "token_account",
+          "writable": true
+        },
+        {
+          "name": "contract_token_account",
+          "writable": true
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "contract",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ]
+}
